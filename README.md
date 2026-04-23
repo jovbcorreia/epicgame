@@ -60,7 +60,6 @@ epicgame/
 ### Prerequisites
 
 - Java 8+
-- IntelliJ IDEA (or any IDE supporting Ant builds)
 
 ### 1. Clone the repo
 
@@ -69,13 +68,27 @@ git clone git@github.com:jovbcorreia/epicgame.git
 cd epicgame
 ```
 
-### 2. Open in IntelliJ
+### 2. Compile
 
-Open the project folder in IntelliJ IDEA. The `lib/simple-graphics-0.2.1-SNAPSHOT.jar` is already included — make sure it is added to the module classpath.
+```bash
+mkdir -p build/classes
+javac -cp lib/simple-graphics-0.2.1-SNAPSHOT.jar \
+      -d build/classes \
+      $(find src -name "*.java")
+```
 
 ### 3. Run
 
-Run `Main.java` directly from the IDE.
+```bash
+java -cp "build/classes:lib/simple-graphics-0.2.1-SNAPSHOT.jar" \
+     org.academiadecodigo.loopeytunes.EpicGame.Main
+```
+
+> **Note:** The game must be run from the project root folder so it can find its resource files (images and sounds).
+
+### Alternative — IntelliJ IDEA
+
+Open the project folder in IntelliJ IDEA. The `lib/simple-graphics-0.2.1-SNAPSHOT.jar` is already included — add it to the module classpath and run `Main.java` directly.
 
 ## How to Play
 
@@ -91,3 +104,14 @@ Run `Main.java` directly from the IDE.
 - **Bad Food** = -10 points
 - **Bomb** = score resets to 0
 - After 10 rounds, the player with the highest score wins.
+
+## Contributors
+
+This was a group project developed by 4 students:
+
+| Name | GitHub |
+|------|--------|
+| João Vilas-Boas Correia | [@jovbcorreia](https://github.com/jovbcorreia) |
+| Rita Febra | — |
+| Miguel Morais | — |
+| Francisco Soares | — |
